@@ -478,6 +478,20 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 
 ## Functions & Values
 
+### [random-function.css](functions/random-function.css)
+**random() Function**
+- Baseline: 🟡 Limited Availability
+- MDN: [random()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/random)
+- Task: Vary decorative shapes without JavaScript
+- Features: Range, step interval, named value sharing, `@supports` fallback
+
+### [progress-function.css](functions/progress-function.css)
+**progress() Function**
+- Baseline: 🔵 Newly Available
+- MDN: [progress()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/progress)
+- Task: Map a value between two bounds to a unitless ratio
+- Features: Clamped 0–1 progress, `no-clamp` extrapolation, `@supports` fallback
+
 ### [css-if-function.css](functions/css-if-function.css)
 **CSS if() Function**
 - Baseline: 🟡 Limited Availability

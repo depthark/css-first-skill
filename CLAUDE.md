@@ -72,7 +72,7 @@ All examples in `css-demos/` follow this header format:
 - `SKILL.md` — Main skill definition (capabilities, rules table, quick reference)
 - `references/rules/` — Behavioral rules (7 files)
 - `references/live-mdn-fetch.md` — Live MDN data fetch workflow
-- `css-demos/INDEX.md` — Catalog of all 72 CSS examples with metadata
+- `css-demos/INDEX.md` — Catalog of all 74 CSS examples with metadata
 - `scripts/update_baseline.py` — Live WebStatus snapshot updater
 
 ## CSS Demo Categories
@@ -85,7 +85,7 @@ All examples in `css-demos/` follow this header format:
 - `css-demos/positioning/` — Anchor positioning
 - `css-demos/interaction/` — CSS carousel, popover, interest invokers, hover queries, overscroll-behavior, scroll-margin/padding, `:target`/`:focus-within`
 - `css-demos/visual/` — Form validation, `color-mix()`, relative colors, `backdrop-filter`, `mix-blend-mode`, `corner-shape`, `clip-path: shape()`, `shape-outside` functions, gap decorations, `text-box-trim`, `text-justify`, `text-decoration-skip-ink`, `font-variant-numeric`, `image-rendering`, `overflow: clip`
-- `css-demos/functions/` — `if()`, `@function`, `attr()`, `contrast-color()`, trig functions, `sibling-index()`/`sibling-count()`
+- `css-demos/functions/` — `random()`, `progress()`, `if()`, `@function`, `attr()`, `contrast-color()`, trig functions, `sibling-index()`/`sibling-count()`
 - `css-demos/specificity/` — `@layer`, `@scope`, `revert-rule`
 - `css-demos/accessibility/` — `prefers-reduced-motion`, `prefers-contrast`, `prefers-reduced-transparency`, `forced-colors`
 - `css-demos/native-customization/` — Customizable `<select>`

@@ -101,6 +101,8 @@ release note or specification.
 | Media playback state | `:playing`, `:paused`, and related pseudo-classes | `css-demos/interaction/media-state-pseudos.css` |
 | Installed-app drag region | `window-drag` | `css-demos/interaction/window-drag.css` |
 | Reduced motion | `prefers-reduced-motion` | `css-demos/accessibility/prefers-reduced-motion.css` |
+| Decorative variation | `random()` | `css-demos/functions/random-function.css` |
+| Normalize a range | `progress()` | `css-demos/functions/progress-function.css` |
 
 Use MDN for syntax and caveats and WebStatus for Baseline:
 

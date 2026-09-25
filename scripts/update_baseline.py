@@ -71,6 +71,8 @@ FEATURES = {
     "visual/background-clip-border-area.css": "background-clip-border-area",
     "visual/css-image-values.css": "light-dark-image",
     "visual/ruby-overhang.css": "ruby-overhang",
+    "functions/random-function.css": "random-function",
+    "functions/progress-function.css": "progress-function",
     "functions/css-if-function.css": "if",
     "functions/custom-functions.css": "function",
     "functions/advanced-attr.css": "attr",

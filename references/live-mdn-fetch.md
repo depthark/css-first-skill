@@ -157,6 +157,8 @@ them straight to `/v1/features/<feature-id>`.
 #### Functions
 | CSS Feature | feature ID |
 |---|---|
+| `random()` | `random-function` |
+| `progress()` | `progress-function` |
 | `if()` | `if` |
 | `@function` | `function` |
 | Advanced `attr()` | `attr` |
