@@ -24,7 +24,7 @@ logical properties, accessibility, and interoperability over novelty.
 - Color and visual design: modern color spaces, `color-mix()`, relative colors,
   `light-dark()`, gradients, masks, and `backdrop-filter`.
 - Motion: `@starting-style`, discrete transitions, view transitions, scroll-driven
-  animations, and `interpolate-size` where supported.
+  animations, and `interpolate-size` / `calc-size()` where supported.
 - Native interaction: popovers, customizable select, CSS carousels, interest
   invokers, anchor positioning, scroll snap, and overscroll control.
 

@@ -1,7 +1,7 @@
 # CSS First Skill
 
 A reusable agent skill for modern, accessible CSS-first implementation advice. It
-combines semantic intent analysis, logical properties, progressive enhancement, 74
+combines semantic intent analysis, logical properties, progressive enhancement, 78
 CSS demos, and live Web Platform Baseline data.
 
 ## What Changed

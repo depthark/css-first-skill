@@ -112,6 +112,7 @@ them straight to `/v1/features/<feature-id>`.
 | `stretch` keyword | `stretch` |
 | Small / large / dynamic viewport units | `viewport-unit-variants` |
 | Masonry layout | `masonry` |
+| `reading-flow` / `reading-order` | `reading-flow` |
 
 #### Animation & Transitions
 | CSS Feature | feature ID |
@@ -123,6 +124,7 @@ them straight to `/v1/features/<feature-id>`.
 | Scroll-driven animations | `scroll-driven-animations` |
 | `@starting-style` | `starting-style` |
 | `interpolate-size` | `interpolate-size` |
+| `calc-size()` | `calc-size` |
 
 #### Interaction
 | CSS Feature | feature ID |
@@ -142,6 +144,7 @@ them straight to `/v1/features/<feature-id>`.
 | `backdrop-filter` | `backdrop-filter` |
 | `mix-blend-mode` | `mix-blend-mode` |
 | `corner-shape` | `corner-shape` |
+| `border-shape` | `border-shape` |
 | `shape()` function | `shape-function` |
 | `shape-outside` | `shape-outside` |
 | `rect()` / `xywh()` | `rect-xywh` |

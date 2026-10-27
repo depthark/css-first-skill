@@ -75,6 +75,14 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 - Task: Balance item distribution across wrapped flex lines
 - Features: `flex-wrap: balance`, `@supports` fallback
 
+
+### [reading-flow.css](layout/reading-flow.css)
+**reading-flow & reading-order — Visual Focus Order**
+- Baseline: 🟡 Limited Availability
+- MDN: [reading-flow](https://developer.mozilla.org/en-US/docs/Web/CSS/reading-flow), [reading-order](https://developer.mozilla.org/en-US/docs/Web/CSS/reading-order)
+- Reference: [Use CSS reading-flow (Chrome Blog)](https://developer.chrome.com/blog/reading-flow), [Interop 2027 proposal #1349](https://github.com/web-platform-tests/interop/issues/1349)
+- Task: Make Tab order and screen readers follow the visual order of reordered flex/grid items
+- Features: `reading-flow: flex-visual` (row-reverse toolbar), `grid-rows` (dense grid), `grid-order` (responsive `order`), `source-order` + `reading-order` promotion, positive-tabindex caveat, `@supports` fallback
 ---
 
 ## Responsive
@@ -385,6 +393,14 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 - Task: Create modern border shapes — bevels, scoops, squircles, notches, tooltip arrows
 - Features: `corner-shape` shorthand (round, squircle, bevel, scoop, notch, square), `superellipse()` function with custom values, physical longhands (`corner-top-left-shape` etc.), logical longhands (`corner-start-start-shape` etc.), side shorthands, mixed corners (per-corner shapes), backdrop-filter/outline/box-shadow follow shape, tooltip arrow with scoop, animated morphing + transition, `@supports` fallback
 
+
+### [border-shape.css](visual/border-shape.css)
+**CSS border-shape Property**
+- Baseline: 🟡 Limited Availability
+- Spec: [CSS Borders and Box Decorations Module Level 4](https://drafts.csswg.org/css-borders-4/#border-shape)
+- Reference: [Chrome Platform Status](https://chromestatus.com/feature/5459864205393920), [Interop 2027 proposal #1371](https://github.com/web-platform-tests/interop/issues/1371)
+- Task: Draw non-rectangular borders — circles, hexagons, speech bubbles, scooped cards — that shadows and clipping follow
+- Features: stroke mode (one shape, `half-border-box`), fill mode (outer + inner shapes), `circle()`/`polygon()`/`shape()` with arcs, relevant-side rule, `box-shadow` following the shape, inner-shape overflow clip, `border-radius` as free fallback (ignored when shaped), animated polygon morph, `@supports` fallback
 ### [text-box-trim.css](visual/text-box-trim.css)
 **text-box-trim & text-box-edge — Optical Text Alignment**
 - Baseline: 🟡 Limited Availability
@@ -492,6 +508,22 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 - Task: Map a value between two bounds to a unitless ratio
 - Features: Clamped 0–1 progress, `no-clamp` extrapolation, `@supports` fallback
 
+
+### [calc-size.css](functions/calc-size.css)
+**calc-size() Function**
+- Baseline: 🟡 Limited Availability
+- MDN: [calc-size()](https://developer.mozilla.org/en-US/docs/Web/CSS/calc-size)
+- Reference: [Interop 2027 proposal #1373](https://github.com/web-platform-tests/interop/issues/1373)
+- Task: Do math on intrinsic sizes and animate to the result
+- Features: `calc-size(auto, size + 1rem)` expand transition, `round(up, size, …)` vertical rhythm, `fit-content` + `max()` pills, `field-sizing` input, `details::details-content` accordion, when to prefer `interpolate-size`, `@supports` fallback
+
+### [inherit-function.css](functions/inherit-function.css)
+**inherit() Function**
+- Baseline: 🟣 Experimental / unknown
+- Spec: [CSS Values and Units Module Level 5](https://drafts.csswg.org/css-values-5/#inherit-notation)
+- Reference: [Chrome Platform Status](https://chromestatus.com/feature/5996914579472384), [Interop 2027 proposal #1453](https://github.com/web-platform-tests/interop/issues/1453)
+- Task: Read and adjust the parent's custom property value in place
+- Features: nesting depth counter, concentric border radii, compounding scale, custom-property-only limitation (Level 5), per-level selector fallback
 ### [css-if-function.css](functions/css-if-function.css)
 **CSS if() Function**
 - Baseline: 🟡 Limited Availability
