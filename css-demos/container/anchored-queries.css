@@ -10,7 +10,7 @@
  * Why: When anchor-positioned elements flip via position-try-fallbacks,
  *      anchored container queries let you detect which fallback is active
  *      and adjust content (e.g. arrow direction, alignment) accordingly
- * Last verified: 2026-08-11
+ * Last verified: 2026-11-26
  */
 
 

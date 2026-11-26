@@ -5,7 +5,7 @@
  * Reference: https://css-tricks.com/masonry-layout-is-now-grid-lanes/
  * WebStatus: grid-lanes
  * Baseline: 🟡 Limited Availability
- * Support: Safari (stable since 2026-10-26); Chrome —, Firefox behind flag
+ * Support: Chrome —, Firefox —, Safari 27.2+
  *
  * Task: Create masonry (waterfall) layouts with pure CSS
  * Why: display: grid-lanes gives Pinterest-style layouts without JS,

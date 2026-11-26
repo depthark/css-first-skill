@@ -10,7 +10,7 @@
  * Task: Make components responsive to their container, not the viewport
  * Why: Container queries let components adapt to their own context;
  *      container units (cqi, cqb, cqw, cqh) scale relative to the container
- * Last verified: 2026-08-11
+ * Last verified: 2026-11-26
  */
 
 

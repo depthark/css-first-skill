@@ -9,12 +9,12 @@
  *
  * WebStatus: anchor-positioning
  * Baseline: 🟡 Limited Availability
- * Support: 75% (Chrome 125+, Edge 125+)
+ * Support: Chrome 157+, Firefox —, Safari 27+
  *
  * Task: Create a tooltip positioned relative to a button
  * Why: CSS Anchor Positioning eliminates JavaScript for tooltip positioning,
  *      with automatic position adjustments and collision detection.
- * Last verified: 2026-08-11
+ * Last verified: 2026-11-26
  */
 
 .button {

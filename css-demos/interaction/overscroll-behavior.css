@@ -8,7 +8,7 @@
  *
  * Task: Prevent scroll chaining, pull-to-refresh, and bounce effects
  * Why: Native solution replaces JS scroll-locking hacks with a single declaration
- * Last verified: 2026-08-11
+ * Last verified: 2026-11-26
  */
 
 /* ============================================================

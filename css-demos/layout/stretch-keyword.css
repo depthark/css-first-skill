@@ -8,7 +8,7 @@
  * Task: Fill containing block while respecting margins
  * Why: Unlike 100% which sizes the content/border box, stretch sizes the
  *      margin box — so margins don't cause overflow
- * Last verified: 2026-08-11
+ * Last verified: 2026-11-26
  */
 
 

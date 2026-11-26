@@ -41,7 +41,8 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 
 ### [grid-lanes-masonry.css](layout/grid-lanes-masonry.css)
 **CSS Grid Lanes — Masonry Layout**
-- Baseline: 🟡 Limited Availability (Safari stable since 2026-10-26)
+- Baseline: 🟡 Limited Availability
+- Note: Safari stable since 2026-10-26; Chrome and Firefox not yet
 - WebKit: [Introducing CSS Grid Lanes](https://webkit.org/blog/17660/introducing-css-grid-lanes/)
 - Reference: [Chrome 158 release notes](https://chromestatus.com/release-notes/158) (`flow-start`/`flow-end`)
 - Task: Create masonry (waterfall) layouts with pure CSS
@@ -187,7 +188,7 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 
 ### [scroll-driven.css](animation/scroll-driven.css)
 **Scroll-Driven Animations**
-- Baseline: 🟡 Limited Availability
+- Baseline: 🔵 Newly Available
 - MDN: [Scroll Timeline](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timeline/scroll), [View Timeline](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timeline/view)
 - Task: Create animation that responds to scroll
 - Features: Scroll timeline, view timeline, animation-range
@@ -219,7 +220,7 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 
 ### [light-dark-function.css](theming/light-dark-function.css)
 **Dark Mode with light-dark() Function**
-- Baseline: 🔵 Newly Available
+- Baseline: 🟢 Widely Available
 - MDN: [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark), [color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme)
 - Task: Implement dark mode support
 - Features: light-dark() function, color-scheme property
@@ -313,7 +314,8 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 
 ### [media-state-pseudos.css](interaction/media-state-pseudos.css)
 **Media Element State Pseudo-Classes**
-- Baseline: 🟡 Limited Availability (all engines since Chrome 158 on 2026-11-17; WebStatus still awaits Edge)
+- Baseline: 🟡 Limited Availability
+- Note: all engines ship it since Chrome 158 (2026-11-17), but WebStatus keeps it Limited until Edge is recorded; earlier "Chrome 152" reports were beta-only
 - MDN: [:playing](https://developer.mozilla.org/en-US/docs/Web/CSS/:playing), [:buffering](https://developer.mozilla.org/en-US/docs/Web/CSS/:buffering), [:muted](https://developer.mozilla.org/en-US/docs/Web/CSS/:muted)
 - Reference: [Chrome 158 release notes](https://chromestatus.com/release-notes/158)
 - Task: Style audio and video from native playback state — no JS class mirroring
@@ -471,7 +473,8 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 
 ### [custom-highlight.css](visual/custom-highlight.css)
 **::highlight() — CSS Custom Highlight API**
-- Baseline: 🔵 Newly Available (`::highlight(*)` is Chrome 158+ only)
+- Baseline: 🔵 Newly Available
+- Note: `::highlight(*)` is Chrome 158+ only
 - MDN: [::highlight()](https://developer.mozilla.org/en-US/docs/Web/CSS/::highlight), [CSS Custom Highlight API](https://developer.mozilla.org/en-US/docs/Web/API/CSS_Custom_Highlight_API)
 - Reference: [Chrome 158 release notes](https://chromestatus.com/release-notes/158)
 - Task: Style search hits, spelling marks, and tokens without wrapping text in elements
@@ -508,7 +511,7 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 
 ### [css-image-values.css](visual/css-image-values.css)
 **Modern CSS Image Values**
-- Baseline: 🟡 Limited Availability
+- Baseline: 🔵 Newly Available
 - Reference: [Chrome 150](https://developer.chrome.com/release-notes/150)
 - Task: Generate solid images, theme image values, and control CSS resource requests
 - Features: `image(<color>)`, image-valued `light-dark()`, `cross-origin()` URL modifier
@@ -587,7 +590,7 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 
 ### [sibling-functions.css](functions/sibling-functions.css)
 **sibling-index() & sibling-count() Functions**
-- Baseline: 🟡 Limited Availability
+- Baseline: 🔵 Newly Available
 - MDN: [sibling-index()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/sibling-index), [sibling-count()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/sibling-count)
 - Spec: CSS Values and Units Module Level 5
 - Task: Dynamically style elements based on their position among siblings — like SCSS `@for` loops but resolved at render time

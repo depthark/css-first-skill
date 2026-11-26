@@ -15,6 +15,9 @@ CSS demos, and live Web Platform Baseline data.
   `text-decoration-inset`, `text-overflow: <string>`, `::highlight()` /
   `::highlight(*)`, `margin-trim`, `flow-start`/`flow-end`, and the
   `anchor-valid` / `anchor-visible` rename.
+- Baseline promotions picked up in the same refresh: scroll-driven animations,
+  `sibling-index()`/`sibling-count()`, and CSS image values became Newly
+  Available; `light-dark()` became Widely Available.
 - The functions catalog now includes `random()` and `progress()` with exact
   WebStatus IDs.
 - Features without an exact WebStatus record remain explicitly experimental/unknown

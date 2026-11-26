@@ -4,9 +4,9 @@
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/progress
  * Spec: https://drafts.csswg.org/css-values-5/#progress
  * WebStatus: progress-function
- * Baseline: 🔵 Newly Available (since 2026-09-01)
+ * Baseline: 🔵 Newly Available
  * Support: Chrome 138+, Firefox 155+, Safari 26+
- * Last verified: 2026-09-25
+ * Last verified: 2026-11-26
  *
  * Task: Map a value between two bounds to a unitless 0–1 ratio.
  * Why: The ratio can drive visual properties without repeating range math.

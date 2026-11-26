@@ -5,9 +5,9 @@
  * Reference: https://developer.chrome.com/blog/chrome-151-beta
  * WebStatus: ruby-overhang
  * Baseline: 🟡 Limited Availability
- * Support: Chrome —, Firefox —, Safari 18.2+
+ * Support: Chrome 151+, Firefox —, Safari 18.2+
  * Release note: Chrome 151, announced 2026-07
- * Last verified: 2026-08-11
+ * Last verified: 2026-11-26
  *
  * Task: Control whether ruby annotations may overhang adjacent base text.
  */

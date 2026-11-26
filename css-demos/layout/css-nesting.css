@@ -10,7 +10,7 @@
  * Task: Write component styles with native CSS nesting (no preprocessor)
  * Why: Native CSS nesting reduces repetition and groups related styles
  *      without Sass/Less — the & selector works natively in browsers
- * Last verified: 2026-08-11
+ * Last verified: 2026-11-26
  */
 
 
