@@ -1,0 +1,86 @@
+/**
+ * text-decoration-inset — Shorten or Extend Underlines
+ *
+ * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-inset
+ * Spec: https://drafts.csswg.org/css-text-decor-4/#text-decoration-inset-property
+ * Release note: https://chromestatus.com/release-notes/157
+ * WebStatus: text-decoration-inset
+ * Baseline: 🟡 Limited Availability
+ * Support: Chrome 157+, Firefox 146+, Safari —
+ * Last verified: 2026-11-26
+ *
+ * Task: Inset underlines, overlines, and line-throughs from the edges of the
+ *       text run — or extend them past it — without pseudo-element hacks.
+ * Why: The old approach drew a fake underline with ::after + inset or a
+ *      background-image gradient, which breaks on multi-line links and
+ *      ignores text-decoration-skip-ink. A real decoration keeps ink
+ *      skipping, color, and thickness behavior.
+ */
+
+
+/* ==========================================================================
+   1. SYNTAX
+
+   text-decoration-inset: auto | <length-percentage>{1,2}
+
+   - One value  → same inset at the start and the end
+   - Two values → start inset, end inset (logical: follow writing direction)
+   - Positive   → the line is SHORTER than the text run
+   - Negative   → the line EXTENDS past the text run
+   - `auto`     → the UA chooses a small inset so decorations on adjacent
+                  runs (e.g. two neighbouring links) don't visually merge
+   ========================================================================== */
+
+
+/* ==========================================================================
+   2. ADJACENT LINKS DON'T MERGE
+   Two underlined links separated only by a space look like one link.
+   ========================================================================== */
+
+.tag-list a {
+  text-decoration-line: underline;
+  text-decoration-inset: auto;
+}
+
+
+/* ==========================================================================
+   3. INSET "SHORT UNDERLINE" ACCENT ON HEADINGS
+   ========================================================================== */
+
+.section-title {
+  text-decoration: underline 0.2em oklch(0.65 0.18 30);
+  text-underline-offset: 0.3em;
+  /* keep the accent off the first and last 0.25em of the heading */
+  text-decoration-inset: 0.25em;
+}
+
+
+/* ==========================================================================
+   4. EXTENDED STRIKE-THROUGH FOR "WAS / NOW" PRICES
+   ========================================================================== */
+
+.price-was {
+  text-decoration: line-through 0.1em currentColor;
+  /* overshoot both ends so the strike clearly covers the currency sign */
+  text-decoration-inset: -0.15em;
+}
+
+
+/* ==========================================================================
+   5. ASYMMETRIC INSET — underline only under the label, not the icon
+   Markup: <a class="ext-link" href="…">Docs ↗</a>
+   ========================================================================== */
+
+.ext-link {
+  text-decoration-line: underline;
+  /* start: 0, end: skip the trailing arrow glyph (~1.2em) */
+  text-decoration-inset: 0 1.2em;
+}
+
+
+/* ==========================================================================
+   6. PROGRESSIVE ENHANCEMENT
+   Unsupported browsers ignore the property and draw a full-width line,
+   which is an acceptable fallback for every pattern above — no @supports
+   gate needed. Gate only if a layout depends on the shortened line.
+   ========================================================================== */

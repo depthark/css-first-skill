@@ -41,10 +41,11 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 
 ### [grid-lanes-masonry.css](layout/grid-lanes-masonry.css)
 **CSS Grid Lanes — Masonry Layout**
-- Baseline: 🟣 Experimental (Safari TP 234+, Firefox behind flag)
+- Baseline: 🟡 Limited Availability (Safari stable since 2026-10-26)
 - WebKit: [Introducing CSS Grid Lanes](https://webkit.org/blog/17660/introducing-css-grid-lanes/)
+- Reference: [Chrome 158 release notes](https://chromestatus.com/release-notes/158) (`flow-start`/`flow-end`)
 - Task: Create masonry (waterfall) layouts with pure CSS
-- Features: `display: grid-lanes`, `grid-template-columns`, lane spanning, explicit placement, horizontal brick layout, `@supports` fallback
+- Features: `display: grid-lanes`, `grid-template-columns`, lane spanning, explicit placement, horizontal brick layout, `flow-start`/`flow-end` alignment keywords (Chrome 158+), `@supports` fallback
 
 ### [isolation-stacking.css](layout/isolation-stacking.css)
 **isolation: isolate — Stacking Context Control**
@@ -83,6 +84,15 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 - Reference: [Use CSS reading-flow (Chrome Blog)](https://developer.chrome.com/blog/reading-flow), [Interop 2027 proposal #1349](https://github.com/web-platform-tests/interop/issues/1349)
 - Task: Make Tab order and screen readers follow the visual order of reordered flex/grid items
 - Features: `reading-flow: flex-visual` (row-reverse toolbar), `grid-rows` (dense grid), `grid-order` (responsive `order`), `source-order` + `reading-order` promotion, positive-tabindex caveat, `@supports` fallback
+
+### [margin-trim.css](layout/margin-trim.css)
+**margin-trim — Drop Edge Margins of First/Last Children**
+- Baseline: 🟡 Limited Availability
+- Support: Chrome 155+, Safari 16.4+, Firefox —
+- MDN: [margin-trim](https://developer.mozilla.org/en-US/docs/Web/CSS/margin-trim)
+- Reference: [Chrome 155 release notes](https://chromestatus.com/release-notes/155)
+- Task: Remove stacked first/last-child margins inside cards, callouts, and multicol articles
+- Features: `margin-trim: block | block-start | block-end | inline…`, block and multicol containers, `@supports not` fallback reset
 ---
 
 ## Responsive
@@ -229,8 +239,9 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 **Anchor Positioning for Tooltips**
 - Baseline: 🟡 Limited Availability
 - MDN: [Anchor Positioning](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_anchor_positioning)
+- Reference: [Chrome 157 release notes](https://chromestatus.com/release-notes/157) (`anchor-valid` / `anchor-visible` rename)
 - Task: Create tooltips positioned relative to elements
-- Features: anchor-name, position-anchor, position-area, position-try, @supports fallback
+- Features: anchor-name, position-anchor, position-area, position-try, anchored container queries, `position-visibility: anchor-visible` (singular, Chrome 157+) with plural fallback, @supports fallback
 
 ---
 
@@ -302,10 +313,11 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 
 ### [media-state-pseudos.css](interaction/media-state-pseudos.css)
 **Media Element State Pseudo-Classes**
-- Baseline: 🟡 Limited Availability
-- Reference: [Chrome 152 beta](https://developer.chrome.com/blog/chrome-152-beta)
-- Task: Style audio and video from native playback state
-- Features: `:playing`, `:paused`, `:seeking`, `:buffering`, `:stalled`, `:muted`, `:volume-locked`
+- Baseline: 🟡 Limited Availability (all engines since Chrome 158 on 2026-11-17; WebStatus still awaits Edge)
+- MDN: [:playing](https://developer.mozilla.org/en-US/docs/Web/CSS/:playing), [:buffering](https://developer.mozilla.org/en-US/docs/Web/CSS/:buffering), [:muted](https://developer.mozilla.org/en-US/docs/Web/CSS/:muted)
+- Reference: [Chrome 158 release notes](https://chromestatus.com/release-notes/158)
+- Task: Style audio and video from native playback state — no JS class mirroring
+- Features: `:playing`, `:paused`, `:seeking`, `:buffering`, `:stalled`, `:muted`, `:volume-locked`, buffering spinner via `:has()`, stalled message, unmute hint, hiding volume UI when `:volume-locked`, `@supports selector()` + JS-class fallback
 
 ### [window-drag.css](interaction/window-drag.css)
 **Installed-App Drag Regions**
@@ -440,6 +452,31 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 - Task: Control how underlines skip over glyph descenders, including CJK
 - Features: `auto` (default), `all` (force skipping for every glyph incl. CJK), `none` (unbroken line), mixed-script typography
 
+### [text-decoration-inset.css](visual/text-decoration-inset.css)
+**text-decoration-inset — Shorten or Extend Underlines**
+- Baseline: 🟡 Limited Availability
+- MDN: [text-decoration-inset](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-inset)
+- Reference: [Chrome 157 release notes](https://chromestatus.com/release-notes/157)
+- Task: Inset or extend native text decorations instead of faking them with pseudo-elements or gradients
+- Features: `auto` (separate adjacent links), one-value inset, negative overshoot for strike-through prices, asymmetric two-value inset
+
+### [text-overflow-string.css](visual/text-overflow-string.css)
+**text-overflow: <string> — Custom Truncation Marker**
+- Baseline: 🟡 Limited Availability (`<string>` value; `ellipsis` is Widely Available)
+- Support: Chrome 157+, Firefox, Safari —
+- MDN: [text-overflow](https://developer.mozilla.org/en-US/docs/Web/CSS/text-overflow)
+- Reference: [Chrome 157 release notes](https://chromestatus.com/release-notes/157)
+- Task: Show a custom marker such as " (more)" or " →" when single-line text is clipped
+- Features: `ellipsis` → string declaration fallback order, card titles, localized markers, two-value syntax caveat
+
+### [custom-highlight.css](visual/custom-highlight.css)
+**::highlight() — CSS Custom Highlight API**
+- Baseline: 🔵 Newly Available (`::highlight(*)` is Chrome 158+ only)
+- MDN: [::highlight()](https://developer.mozilla.org/en-US/docs/Web/CSS/::highlight), [CSS Custom Highlight API](https://developer.mozilla.org/en-US/docs/Web/API/CSS_Custom_Highlight_API)
+- Reference: [Chrome 158 release notes](https://chromestatus.com/release-notes/158)
+- Task: Style search hits, spelling marks, and tokens without wrapping text in elements
+- Features: named highlights, allowed properties, overlap priority, `::highlight(*)` zero-specificity base style, forced-colors handling
+
 ### [image-rendering.css](visual/image-rendering.css)
 **image-rendering — Crisp Scaling for Pixel Art**
 - Baseline: 🔵 Newly Available
@@ -497,7 +534,9 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 ### [random-function.css](functions/random-function.css)
 **random() Function**
 - Baseline: 🟡 Limited Availability
+- Support: Chrome 156+, Safari 26.2+, Firefox —
 - MDN: [random()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/random)
+- Reference: [Chrome 156 release notes](https://chromestatus.com/release-notes/156)
 - Task: Vary decorative shapes without JavaScript
 - Features: Range, step interval, named value sharing, `@supports` fallback
 

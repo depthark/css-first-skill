@@ -1,7 +1,7 @@
 # CSS First Skill
 
 A reusable agent skill for modern, accessible CSS-first implementation advice. It
-combines semantic intent analysis, logical properties, progressive enhancement, 78
+combines semantic intent analysis, logical properties, progressive enhancement, 82
 CSS demos, and live Web Platform Baseline data.
 
 ## What Changed
@@ -11,6 +11,10 @@ CSS demos, and live Web Platform Baseline data.
 - `scripts/update_baseline.py` refreshes mapped demo headers and index entries from
   `api.webstatus.dev`.
 - The catalog includes author-facing CSS additions from Chrome 148 through 152.
+- November 2026 refresh: media state pseudo-classes complete in Chrome 158,
+  `text-decoration-inset`, `text-overflow: <string>`, `::highlight()` /
+  `::highlight(*)`, `margin-trim`, `flow-start`/`flow-end`, and the
+  `anchor-valid` / `anchor-visible` rename.
 - The functions catalog now includes `random()` and `progress()` with exact
   WebStatus IDs.
 - Features without an exact WebStatus record remain explicitly experimental/unknown

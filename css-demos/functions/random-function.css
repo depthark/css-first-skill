@@ -5,8 +5,9 @@
  * Spec: https://drafts.csswg.org/css-values-5/#random
  * WebStatus: random-function
  * Baseline: 🟡 Limited Availability
- * Support: Safari 26.2+; no stable Chrome or Firefox support recorded
- * Last verified: 2026-09-25
+ * Support: Chrome 156+, Safari 26.2+, Firefox —
+ * Release note: https://chromestatus.com/release-notes/156
+ * Last verified: 2026-11-26
  *
  * Task: Vary decorative shapes without JavaScript.
  * Why: A named random key can reuse one value across properties of an element.

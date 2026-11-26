@@ -5,6 +5,7 @@
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/anchor-name
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/position-anchor
  * Spec: https://www.w3.org/TR/css-anchor-position-2/
+ * Release note: https://chromestatus.com/release-notes/157 (anchor-valid / anchor-visible)
  *
  * WebStatus: anchor-positioning
  * Baseline: 🟡 Limited Availability
@@ -92,4 +93,20 @@
   .tooltip-anchored {
     position-area: bottom;
   }
+}
+
+/* position-visibility — hide the tooltip when its anchor scrolls away or
+   no anchor resolves (Chrome 157 renamed the plural values):
+     anchor-visible  — hide when the anchor is fully clipped/scrolled out
+     anchor-valid    — hide when position-anchor doesn't resolve to an element
+     no-overflow     — hide when the positioned box itself overflows
+   The old plural spellings (anchors-visible, anchors-valid) remain as
+   deprecated aliases in Chrome; Firefox and Safari shipped the plurals.
+   Write the singular form and keep the plural as a fallback for now. */
+.tooltip-scrolling {
+  position: absolute;
+  position-anchor: --my-button;
+  position-area: top;
+  position-visibility: anchors-visible; /* Firefox, Safari (plural) */
+  position-visibility: anchor-visible;  /* Chrome 157+ (spec name) */
 }

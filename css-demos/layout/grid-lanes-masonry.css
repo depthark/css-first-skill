@@ -3,12 +3,14 @@
  *
  * WebKit: https://webkit.org/blog/17660/introducing-css-grid-lanes/
  * Reference: https://css-tricks.com/masonry-layout-is-now-grid-lanes/
- * Baseline: 🟣 Experimental (Safari TP 234+, Firefox behind flag)
+ * WebStatus: grid-lanes
+ * Baseline: 🟡 Limited Availability
+ * Support: Safari (stable since 2026-10-26); Chrome —, Firefox behind flag
  *
  * Task: Create masonry (waterfall) layouts with pure CSS
  * Why: display: grid-lanes gives Pinterest-style layouts without JS,
  *      using familiar grid syntax for columns, spanning, and placement
- * Last verified: 2026-02
+ * Last verified: 2026-11-26
  */
 
 
@@ -208,5 +210,38 @@
 @supports (display: grid-lanes) {
   .masonry-enhanced {
     display: grid-lanes;
+  }
+}
+
+
+/* ==========================================================================
+   10. flow-start / flow-end ALIGNMENT KEYWORDS (Chrome 158+)
+   Release note: https://chromestatus.com/release-notes/158
+
+   New value aliases for flex-start / flex-end. They name the edge where
+   PLACEMENT begins, which matters once placement can be reversed
+   (e.g. reversed lane filling in Grid Lanes). With the alias, flex-start /
+   flex-end also follow logical placement direction outside flexbox.
+   Computed values serialize as flow-start / flow-end.
+
+   Chrome 158 ships the keywords (usable today in flexbox); Grid Lanes
+   itself is Safari-only at the time of writing, so the grid-lanes rule
+   below is forward-looking.
+   ========================================================================== */
+
+/* Flexbox: identical to flex-start, but reads correctly when reversed */
+.toolbar-reversed {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;   /* fallback */
+  justify-content: flow-start;   /* Chrome 158+ */
+}
+
+/* Grid Lanes: align items to the edge where lane filling starts */
+@supports (display: grid-lanes) {
+  .masonry-aligned {
+    display: grid-lanes;
+    grid-template-columns: repeat(3, 15rem); /* fixed lanes leave free space */
+    justify-content: flow-start;
   }
 }

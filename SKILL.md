@@ -98,7 +98,11 @@ release note or specification.
 | Native tooltip placement | Anchor positioning | `css-demos/positioning/anchor-positioning.css` |
 | Responsive headline fitting | `text-fit` | `css-demos/visual/text-fit.css` |
 | Theme-aware images | `light-dark()` / `image()` | `css-demos/visual/css-image-values.css` |
-| Media playback state | `:playing`, `:paused`, and related pseudo-classes | `css-demos/interaction/media-state-pseudos.css` |
+| Media playback state | `:playing`, `:paused`, and related pseudo-classes (spinner via `:has(video:buffering)`) | `css-demos/interaction/media-state-pseudos.css` |
+| Trim first/last child margins | `margin-trim` | `css-demos/layout/margin-trim.css` |
+| Shorter/longer underlines | `text-decoration-inset` | `css-demos/visual/text-decoration-inset.css` |
+| Custom truncation marker | `text-overflow: " (more)"` | `css-demos/visual/text-overflow-string.css` |
+| Highlight text ranges without wrappers | `::highlight()` / `::highlight(*)` | `css-demos/visual/custom-highlight.css` |
 | Installed-app drag region | `window-drag` | `css-demos/interaction/window-drag.css` |
 | Reduced motion | `prefers-reduced-motion` | `css-demos/accessibility/prefers-reduced-motion.css` |
 | Decorative variation | `random()` | `css-demos/functions/random-function.css` |

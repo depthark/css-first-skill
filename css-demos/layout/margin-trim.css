@@ -1,0 +1,83 @@
+/**
+ * margin-trim — Drop Edge Margins of First/Last Children
+ *
+ * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/margin-trim
+ * Spec: https://drafts.csswg.org/css-box-4/#margin-trim
+ * Release note: https://chromestatus.com/release-notes/155
+ * WebStatus: margin-trim
+ * Baseline: 🟡 Limited Availability
+ * Support: Chrome 155+, Safari 16.4+, Firefox —
+ * Last verified: 2026-11-26
+ *
+ * Task: Remove the stray top margin of the first child and bottom margin of
+ *       the last child inside a card, callout, or article — so the
+ *       container's own padding is the only spacing at its edges.
+ * Why: The classic fixes — `> :first-child { margin-block-start: 0 }`,
+ *      `> * + *` lobotomized owls, or `display: flow-root` hacks — must be
+ *      repeated per component and break when markup changes. margin-trim
+ *      states the intent once, on the container.
+ */
+
+
+/* ==========================================================================
+   1. VALUES
+
+   margin-trim: none | block | inline
+              | [ block-start || inline-start || block-end || inline-end ]
+
+   - block        → trim block-start of first child + block-end of last child
+   - block-start  → only the first child's leading margin
+   - block-end    → only the last child's trailing margin
+   - inline*      → the same along the inline axis
+
+   Chrome 155 applies it to block containers and multicol containers.
+   (An earlier spec draft also covered flex/grid — that was removed.)
+   ========================================================================== */
+
+
+/* ==========================================================================
+   2. CARD — rich-text content with uniform padding
+   ========================================================================== */
+
+.card {
+  padding: 1.5rem;
+  margin-trim: block;
+}
+
+/* Content can keep its normal typographic rhythm… */
+.card :is(h2, h3, p, ul) {
+  margin-block: 1em;
+}
+/* …and the first/last margins no longer stack onto the padding. */
+
+
+/* ==========================================================================
+   3. CALLOUT — only the trailing edge
+   Keep the heading's top margin (it sits below an icon row), trim the end.
+   ========================================================================== */
+
+.callout {
+  padding: 1rem 1.25rem;
+  margin-trim: block-end;
+}
+
+
+/* ==========================================================================
+   4. MULTICOL — trim at column breaks too
+   ========================================================================== */
+
+.article-columns {
+  columns: 2 20rem;
+  margin-trim: block;
+}
+
+
+/* ==========================================================================
+   5. PROGRESSIVE ENHANCEMENT
+   Firefox doesn't support it yet: apply the explicit reset only there.
+   ========================================================================== */
+
+@supports not (margin-trim: block) {
+  .card > :first-child { margin-block-start: 0; }
+  .card > :last-child  { margin-block-end: 0; }
+}

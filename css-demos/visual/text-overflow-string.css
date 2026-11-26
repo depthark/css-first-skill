@@ -1,0 +1,65 @@
+/**
+ * text-overflow: <string> — Custom Truncation Marker
+ *
+ * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/text-overflow
+ * Release note: https://chromestatus.com/release-notes/157
+ * WebStatus: none for the <string> value (parent feature `text-overflow`
+ *            is Widely Available for `clip` / `ellipsis`)
+ * Baseline: 🟡 Limited Availability (the <string> value)
+ * Support: Chrome 157+, Firefox (long-standing), Safari —
+ * Last verified: 2026-11-26
+ *
+ * Task: Replace the default "…" with a custom marker such as " (more)" or
+ *       " →" when single-line text is clipped.
+ * Why: Previously a custom marker meant measuring text in JavaScript or
+ *      overlaying a fake gradient + label. A string value keeps the
+ *      truncation native, selectable, and resize-aware.
+ */
+
+
+/* ==========================================================================
+   1. REQUIREMENTS — same as ellipsis
+   text-overflow only acts on a single-line box whose overflow is clipped.
+   ========================================================================== */
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;            /* fallback: every browser */
+  text-overflow: " (more)";           /* Chrome 157+, Firefox */
+}
+
+
+/* ==========================================================================
+   2. PATTERNS
+   ========================================================================== */
+
+/* Card title that hints there's more on the detail page */
+.card__title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-overflow: " →";
+}
+
+/* Table cell with a localized marker — keep strings short; the marker
+   itself is clipped if it doesn't fit */
+:lang(cs) .cell--truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-overflow: " …více";
+}
+
+
+/* ==========================================================================
+   3. GOTCHAS
+
+   - Declare `ellipsis` FIRST, then the string: browsers that don't
+     understand the string drop that declaration and keep `ellipsis`.
+   - Two-value syntax (`text-overflow: "[" "]"` — start and end) is
+     Firefox-only; don't rely on it.
+   - The marker is presentational. Screen readers still announce the full
+     text, so never use the string to convey information the text lacks.
+   - Multi-line truncation is still `line-clamp`, not `text-overflow`.
+   ========================================================================== */

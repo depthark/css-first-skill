@@ -1,0 +1,97 @@
+/**
+ * ::highlight() — CSS Custom Highlight API (+ ::highlight(*) universal)
+ *
+ * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/::highlight
+ * MDN: https://developer.mozilla.org/en-US/docs/Web/API/CSS_Custom_Highlight_API
+ * Release note: https://chromestatus.com/release-notes/158 (::highlight(*))
+ * WebStatus: highlight
+ * Baseline: 🔵 Newly Available
+ * Support: Chrome 105+, Firefox 140+, Safari 17.2+
+ * Last verified: 2026-11-26
+ *
+ * Task: Style arbitrary text ranges — search matches, spell-check marks,
+ *       syntax tokens, collaborator cursors — without wrapping them in
+ *       <mark>/<span> elements.
+ * Why: Wrapping ranges mutates the DOM, breaks text nodes, and is slow on
+ *      large documents. Highlights are painted over existing text; the DOM
+ *      stays untouched.
+ *
+ * Note: Registering WHICH ranges are highlighted needs a few lines of JS
+ *       (CSS.highlights.set). All styling stays in CSS.
+ *       ::highlight(*) is newer — Chrome 158+ only; see section 4.
+ */
+
+
+/* ==========================================================================
+   1. REGISTERING RANGES (JS — shown for context)
+
+   const range = new Range();
+   range.setStart(textNode, 4);
+   range.setEnd(textNode, 11);
+   CSS.highlights.set("search-hit", new Highlight(range));
+
+   Highlight names are just strings; style them below by name.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   2. STYLING NAMED HIGHLIGHTS
+   Only a limited set of properties applies: color, background-color,
+   text-decoration*, text-shadow, -webkit-text-stroke-*, -webkit-text-fill-color.
+   No layout properties — highlights can't change geometry.
+   ========================================================================== */
+
+::highlight(search-hit) {
+  background-color: oklch(0.92 0.17 95);
+  color: oklch(0.2 0 0);
+}
+
+::highlight(search-current) {
+  background-color: oklch(0.75 0.19 55);
+  color: oklch(0.15 0 0);
+}
+
+::highlight(spelling) {
+  text-decoration: underline wavy oklch(0.6 0.22 25);
+  text-decoration-skip-ink: none;
+}
+
+
+/* ==========================================================================
+   3. PRIORITY
+   When ranges overlap, the Highlight with the higher `priority` (set in JS:
+   highlight.priority = 1) paints on top — e.g. the current search hit over
+   the other hits. Same priority → the one registered later wins.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   4. ::highlight(*) — UNIVERSAL BASE STYLE (Chrome 158+)
+   Matches every custom highlight regardless of name. The * contributes
+   zero specificity, so it acts as a default that named rules override
+   through the normal cascade.
+   ========================================================================== */
+
+::highlight(*) {
+  /* consistent forced-colors / high-contrast baseline for ALL highlights */
+  background-color: Mark;
+  color: MarkText;
+}
+
+/* Named rules above still win: ::highlight(search-hit) has higher
+   specificity than ::highlight(*), so the yellow background applies. */
+
+
+/* ==========================================================================
+   5. ACCESSIBILITY
+   Highlights are visual only — assistive tech isn't told about them.
+   If the highlight carries meaning (e.g. "this word is misspelled"),
+   expose it another way (aria-description, a results count, etc.).
+   ========================================================================== */
+
+@media (forced-colors: active) {
+  ::highlight(search-current) {
+    background-color: Highlight;
+    color: HighlightText;
+  }
+}

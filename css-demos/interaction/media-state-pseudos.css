@@ -1,38 +1,171 @@
 /**
- * Media element state pseudo-classes
+ * Media Element State Pseudo-Classes
  *
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/:playing
- * Reference: https://developer.chrome.com/blog/chrome-152-beta
+ * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/:paused
+ * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/:buffering
+ * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/:seeking
+ * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/:stalled
+ * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/:muted
+ * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/:volume-locked
+ * Release note: https://chromestatus.com/release-notes/158
  * WebStatus: media-pseudos
  * Baseline: 🟡 Limited Availability
- * Support: Chrome —, Firefox 150+, Safari 15.4+
- * Release note: Chrome 152 beta, announced 2026-07-30
- * Last verified: 2026-08-11
+ * Support: Chrome 158+, Firefox 150+, Safari 15.4+
+ * Last verified: 2026-11-26
  *
- * Task: Style audio and video elements from their native playback state.
+ * Task: Style <video> and <audio> players from their native playback state —
+ *       show a spinner while buffering, dim when paused, flag muted audio.
+ * Why: Visual state no longer has to be mirrored into CSS classes from
+ *      JavaScript event listeners (play/pause/waiting/seeking/volumechange).
+ *      JS is still needed to CONTROL playback (custom buttons), but the
+ *      visual reaction to state is pure CSS.
+ *
+ * Note: Chrome 158 (stable 2026-11-17) completed the set across engines,
+ *       but WebStatus still lists the feature as Limited because Edge has
+ *       no recorded implementation yet. MDN's banner may lag its own compat
+ *       table for the same reason. Earlier reports of "Chrome 152" support
+ *       referred to the beta channel only (mdn/browser-compat-data#30523).
  */
 
-.player :is(audio, video) {
-  outline: 0.25rem solid transparent;
-  transition: opacity 160ms ease, outline-color 160ms ease;
+
+/* ==========================================================================
+   1. STATE REFERENCE
+
+   Pseudo-class       Matches when the media element…
+   ────────────────   ────────────────────────────────────────────────────
+   :playing           is playing (also while buffering/stalled — it is
+                      "trying" to play, not paused)
+   :paused            is paused (includes the initial, never-played state)
+   :buffering         is playing but temporarily waiting for data
+   :seeking           is seeking to a new position
+   :stalled           is playing but the network stopped delivering data
+   :muted             is muted (the `muted` attribute/property is true)
+   :volume-locked     its volume cannot be changed by script (e.g. iOS,
+                      where the OS owns volume)
+   ========================================================================== */
+
+
+/* ==========================================================================
+   2. BUFFERING SPINNER WITH :has()
+   The player wrapper reacts to its <video> child — no class toggling.
+   ========================================================================== */
+
+/* Example markup:
+   <figure class="player">
+     <video src="clip.mp4" controls></video>
+     <span class="player__spinner" aria-hidden="true"></span>
+   </figure> */
+
+.player {
+  position: relative;
+  inline-size: min(100%, 48rem);
 }
 
-.player :is(audio, video):playing {
-  outline-color: limegreen;
+.player > :is(video, audio) {
+  display: block;
+  inline-size: 100%;
 }
 
-.player :is(audio, video):paused {
-  opacity: 0.72;
+.player__spinner {
+  display: none;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  inline-size: 3rem;
+  aspect-ratio: 1;
+  border: 0.3rem solid oklch(1 0 0 / 0.35);
+  border-block-start-color: oklch(1 0 0);
+  border-radius: 50%;
+  pointer-events: none;
 }
 
-.player :is(audio, video):is(:seeking, :buffering, :stalled) {
-  cursor: progress;
+.player:has(video:is(:buffering, :seeking, :stalled)) .player__spinner {
+  display: block;
 }
 
-.player :is(audio, video):muted {
-  outline-color: orange;
+@media (prefers-reduced-motion: no-preference) {
+  .player__spinner {
+    animation: player-spin 0.8s linear infinite;
+  }
 }
 
-.player :is(audio, video):volume-locked {
-  filter: grayscale(1);
+@keyframes player-spin {
+  to { rotate: 1turn; }
+}
+
+
+/* ==========================================================================
+   3. PLAYING vs PAUSED
+   ========================================================================== */
+
+.player > video {
+  transition: filter 160ms ease;
+}
+
+/* Dim the frame while paused so overlay controls read clearly */
+.player > video:paused {
+  filter: brightness(0.75);
+}
+
+/* Show a "Live/Now playing" badge only while playing */
+.player__badge {
+  display: none;
+}
+
+.player:has(> :is(video, audio):playing) .player__badge {
+  display: inline-block;
+}
+
+
+/* ==========================================================================
+   4. STALLED — distinguish a dead network from a short buffer
+   :stalled is a stronger signal than :buffering; surface a message.
+   ========================================================================== */
+
+.player__stalled-msg {
+  display: none;
+}
+
+.player:has(> :is(video, audio):stalled) .player__stalled-msg {
+  display: block;
+}
+
+
+/* ==========================================================================
+   5. MUTED & VOLUME-LOCKED
+   ========================================================================== */
+
+/* Prompt users to unmute autoplaying (muted) video */
+.player__unmute-hint {
+  display: none;
+}
+
+.player:has(> video:playing:muted) .player__unmute-hint {
+  display: block;
+}
+
+/* Hide a custom volume slider where the OS owns volume (e.g. iOS) */
+.player:has(> :is(video, audio):volume-locked) .player__volume {
+  display: none;
+}
+
+
+/* ==========================================================================
+   6. PROGRESSIVE ENHANCEMENT
+   Unsupported browsers drop any rule whose selector they can't parse,
+   so the spinner simply never appears there. Gate enhancement-only
+   layout with selector() detection, and keep JS class-based state as a
+   fallback if the state is essential to understanding the UI.
+   ========================================================================== */
+
+@supports selector(:buffering) {
+  .player {
+    --player-has-native-state: 1;
+  }
+}
+
+/* Fallback hook for JS-driven state in older browsers */
+.player.is-buffering .player__spinner {
+  display: block;
 }
